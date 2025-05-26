@@ -1,3 +1,69 @@
+// 👹 Монстры
+const monsterNames = ["Тень Душ", "Костяной Король", "Пожиратель Света"];
+let nextMonsterAttack = 20;
+let monsterActive = false;
+
+const monsterNameEl = document.getElementById("monsterName");
+const monsterDamageEl = document.getElementById("monsterDamage");
+const nextAttackTimerEl = document.getElementById("nextAttackTimer");
+const defendBtn = document.getElementById("defendBtn");
+
+defendBtn.addEventListener("click", () => {
+  if (mana >= 100) {
+    mana -= 100;
+    if (monsterActive) {
+      monsterActive = false;
+      monsterNameEl.textContent = "—";
+      monsterDamageEl.textContent = "0";
+      alert("Ты изгнал монстра с помощью магии!");
+    } else {
+      alert("Нет монстра для изгнания.");
+    }
+    updateUI();
+  } else {
+    alert("Не хватает маны на защиту!");
+  }
+});
+
+// Таймер атак
+setInterval(() => {
+  if (!monsterActive) {
+    nextMonsterAttack -= 1;
+    nextAttackTimerEl.textContent = nextMonsterAttack + " сек.";
+    if (nextMonsterAttack <= 0) {
+      summonMonster();
+    }
+  }
+}, 1000);
+
+function summonMonster() {
+  monsterActive = true;
+  nextMonsterAttack = Math.floor(20 + Math.random() * 30);
+  const name = monsterNames[Math.floor(Math.random() * monsterNames.length)];
+  const damage = Math.floor(1 + Math.random() * 3);
+
+  monsterNameEl.textContent = name;
+  monsterDamageEl.textContent = damage;
+
+  setTimeout(() => {
+    if (monsterActive) {
+      towers = Math.max(0, towers - damage);
+      monsterActive = false;
+      monsterNameEl.textContent = "—";
+      monsterDamageEl.textContent = "0";
+      flashTowerDamage();
+      updateUI();
+    }
+  }, 5000);
+}
+
+function flashTowerDamage() {
+  towerCountEl.classList.add("text-red-500");
+  setTimeout(() => {
+    towerCountEl.classList.remove("text-red-500");
+  }, 1000);
+}
+
 // main.js
 let mana = 0;
 let towers = 0;

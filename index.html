@@ -1,0 +1,34 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dark Fantasy Tycoon</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gradient-to-b from-gray-900 to-black text-gray-100 font-sans overflow-hidden">
+  <div id="app" class="h-screen w-screen flex flex-col items-center justify-center">
+    <h1 class="text-4xl md:text-6xl font-bold text-purple-300 drop-shadow-lg mb-8 animate-fade-in">
+      👑 Shadow Dominion
+    </h1>
+    
+    <div class="flex gap-6 mb-10 animate-fade-in-slow">
+      <button id="gatherBtn" class="px-6 py-3 bg-purple-700 hover:bg-purple-800 text-white rounded-2xl shadow-lg transition">
+        Собирать маны 💠
+      </button>
+      <button id="buildBtn" class="px-6 py-3 bg-gray-800 hover:bg-gray-700 text-white rounded-2xl shadow-lg transition">
+        Строить башню 🏰
+      </button>
+    </div>
+
+    <div id="gameUI" class="w-11/12 max-w-4xl bg-black/30 backdrop-blur p-6 rounded-2xl shadow-2xl border border-purple-900 space-y-4 animate-slide-up">
+      <p>💠 Мана: <span id="manaCount">0</span></p>
+      <p>🏰 Башни: <span id="towerCount">0</span></p>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>

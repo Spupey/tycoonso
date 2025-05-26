@@ -43,4 +43,11 @@ body::before {
 @keyframes pulse {
   0%, 100% { opacity: 0.4; }
   50% { opacity: 0.8; }
+}#monsters {
+  animation: pulseRed 5s infinite alternate;
+}
+
+@keyframes pulseRed {
+  from { box-shadow: 0 0 10px #7f1d1d; }
+  to { box-shadow: 0 0 20px #dc2626; }
 }
